@@ -1,6 +1,7 @@
 // Time set in seconds
 let currentTime = 10
 let timer = null
+let currentQuestionIndex = null
 
 // questions
 let questions = [
@@ -33,10 +34,8 @@ let tick = function () {
     console.log('ticking')
     currentTime--
     if (currentTime <= 0) {
-        if (timer) {
-             // quiz finished show high score thingie and stop counter
-            clearInterval(timer);
-        }
+        // quiz finished show high score thingie and stop counter
+            renderHighScores();
     }
     let timerBox = document.getElementById('timer-display');
     if (timerBox) {
@@ -49,19 +48,42 @@ let tick = function () {
 
 function startGame(event) {
     console.log('clicked')
-    let question = questions[0];
-    document.getElementById('questions').textContent = question.questionText;
-    document.getElementById('answer1').textContent = question.answers[0];
-    document.getElementById('answer2').textContent = question.answers[1];
-    document.getElementById('answer3').textContent = question.answers[2];
-    console.log('bunnies')
+    currentQuestionIndex = 0;
+    renderCurrentQuestion();
+    document.getElementById('questions').style.display="block";
+    document.getElementById('answers').style.display="block";
     timer = setInterval(tick, 1000);
 }
 
 function answerClick(event) {
-    console.log('i clicked ' + event.target.id)
+    console.log('i clicked ' + event.target.id);
+    currentQuestionIndex++;
+    if (currentQuestionIndex >= questions.length) {
+        // we are at the end of the quiz
+        renderHighScores();
+    }
+    else {
+        // show the next question
+        renderCurrentQuestion();
+    }
 }
 
+function renderHighScores() {
+    console.log('high scores go here');
+    if (timer) {
+        clearInterval(timer);
+    }
+    document.getElementById('questions').style.display="none";
+    document.getElementById('answers').style.display="none";
+}
+
+function renderCurrentQuestion() {
+    let question = questions[currentQuestionIndex];
+    document.getElementById('questions').textContent = question.questionText;
+    document.getElementById('answer1').textContent = question.answers[0];
+    document.getElementById('answer2').textContent = question.answers[1];
+    document.getElementById('answer3').textContent = question.answers[2];
+}
 
 document.getElementById('start-btn').addEventListener("click", startGame);
 let answerButtons = document.querySelectorAll('.answer-button');
