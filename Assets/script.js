@@ -1,5 +1,5 @@
 // Time set in seconds
-let currentTime = 10
+let currentTime = 30
 let timer = null
 let currentQuestionIndex = null
 
@@ -56,7 +56,20 @@ function startGame(event) {
 }
 
 function answerClick(event) {
-    console.log('i clicked ' + event.target.id);
+    let answerId = event.target.id;
+    console.log('i clicked ' + answerId);
+// provide feedback on answer
+    let answerIndex = parseInt(answerId.substring(6))-1;
+    console.log(answerIndex)
+    let correctAnswerIndex = questions[currentQuestionIndex].correctAnswer;
+    if (answerIndex === correctAnswerIndex) {
+        document.getElementById('feedback').textContent = "Good Job!";
+    }
+    else {
+        document.getElementById('feedback').textContent = "INCORRECT!";
+        currentTime = currentTime - 5;
+    }
+
     currentQuestionIndex++;
     if (currentQuestionIndex >= questions.length) {
         // we are at the end of the quiz
