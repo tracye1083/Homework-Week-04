@@ -27,23 +27,21 @@ let questions = [{
     }
 ]
 
-
+// timer function
 
 let tick = function() {
-    console.log('ticking')
     currentTime--
     if (currentTime <= 0) {
-        // quiz finished show high score thingie and stop counter
+        // quiz finished, show high score thingie and stop counter
         renderHighScores();
     }
     let timerBox = document.getElementById('timer-display');
     if (timerBox) {
         timerBox.textContent = currentTime;
-
     }
 }
 
-
+// starting game function
 
 function startGame(event) {
     console.log('clicked')
@@ -53,6 +51,8 @@ function startGame(event) {
     document.getElementById('answers').style.display = "block";
     timer = setInterval(tick, 1000);
 }
+
+// answering questions function
 
 function answerClick(event) {
     let answerId = event.target.id;
