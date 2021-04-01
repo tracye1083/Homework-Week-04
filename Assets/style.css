@@ -1,28 +1,96 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+    font-size: 44px;
+    color: rgb(72, 8, 175);
+}
+
+h2,
+h3 {
+    text-align: center;
+    color: rgb(83, 11, 124);
+}
+
+p {
+    font-size: 20px;
+}
+
+.quiz {
+    font-family: 'Raleway', sans-serif;
+}
+
+.questions {
+    font-size: 20px;
+}
+
+.timer {
+    font-size: 25px;
+}
+
+.feedback {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.btn {
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    background-color: rgb(83, 11, 124);
+    border-radius: 25px;
+    box-shadow: rgba(4, 0, 5, 0.1) 0px 1px 6px 0px rgba(4, 0, 5, 0.1) 0px 1px 1px 0px;
+    color: hsl(0, 0%, 100%);
+    display: inline-block;
+    font-size: 22px;
+    line-height: 22px;
+    margin: 16px 16px 16px 20px;
+    padding: 14px 34px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #c395f8;
+    color: rgb(83, 11, 124);
+}
+
+.sticky-footer {
+    text-align: center;
+    color: #595a5a;
+    bottom: 0px;
+    position: fixed;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
 
 /* hide button divs to start */
 
+#questions {
+    display: none;
+}
 
-
+#answers {
+    display: none;
+}
 
 @media (max-width: 690px) {
     .btn {
-      font-size: 1rem;
-      margin: 16px 0px 0px 0px;
-      padding: 10px 15px;
+        font-size: 1rem;
+        margin: 16px 0px 0px 0px;
+        padding: 10px 15px;
     }
-  
-    #password {
-      font-size: 1rem;
-    }
-  }
-  
-  @media (max-width: 500px) {
+}
+
+@media (max-width: 500px) {
     .btn {
-      font-size: 0.8rem;
+        font-size: 0.8rem;
     }
-  }
+}

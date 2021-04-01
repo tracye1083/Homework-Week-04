@@ -4,38 +4,37 @@ let timer = null
 let currentQuestionIndex = null
 
 // questions
-let questions = [
-    {
-        questionText: 'How many fluffy bunnies are there?', 
+let questions = [{
+        questionText: 'How many fluffy bunnies are there?',
         answers: [
             '1 Bunny', '2 Bunnies', '3 Bunnies'
-        ], 
+        ],
         correctAnswer: 1
     },
     {
-        questionText: 'How many soft duckies are there?', 
+        questionText: 'How many soft duckies are there?',
         answers: [
             '1 Duckie', '2 Duckies', '3 Duckies'
-        ], 
+        ],
         correctAnswer: 0
     },
     {
-        questionText: 'How many cookies should I eat?', 
+        questionText: 'How many cookies should I eat?',
         answers: [
             '1 cookie', '2 cookies', 'Never enough cookies'
-        ], 
+        ],
         correctAnswer: 2
     }
 ]
 
 
 
-let tick = function () {
+let tick = function() {
     console.log('ticking')
     currentTime--
     if (currentTime <= 0) {
         // quiz finished show high score thingie and stop counter
-            renderHighScores();
+        renderHighScores();
     }
     let timerBox = document.getElementById('timer-display');
     if (timerBox) {
@@ -50,23 +49,22 @@ function startGame(event) {
     console.log('clicked')
     currentQuestionIndex = 0;
     renderCurrentQuestion();
-    document.getElementById('questions').style.display="block";
-    document.getElementById('answers').style.display="block";
+    document.getElementById('questions').style.display = "block";
+    document.getElementById('answers').style.display = "block";
     timer = setInterval(tick, 1000);
 }
 
 function answerClick(event) {
     let answerId = event.target.id;
     console.log('i clicked ' + answerId);
-// provide feedback on answer
-    let answerIndex = parseInt(answerId.substring(6))-1;
+    // provide feedback on answer
+    let answerIndex = parseInt(answerId.substring(6)) - 1;
     console.log(answerIndex)
     let correctAnswerIndex = questions[currentQuestionIndex].correctAnswer;
     if (answerIndex === correctAnswerIndex) {
-        document.getElementById('feedback').textContent = "Good Job!";
-    }
-    else {
-        document.getElementById('feedback').textContent = "INCORRECT!";
+        document.getElementById('feedback').textContent = "Correct answer!";
+    } else {
+        document.getElementById('feedback').textContent = "Wrong answer! -5 seconds from timer";
         currentTime = currentTime - 5;
     }
 
@@ -74,8 +72,7 @@ function answerClick(event) {
     if (currentQuestionIndex >= questions.length) {
         // we are at the end of the quiz
         renderHighScores();
-    }
-    else {
+    } else {
         // show the next question
         renderCurrentQuestion();
     }
@@ -86,8 +83,8 @@ function renderHighScores() {
     if (timer) {
         clearInterval(timer);
     }
-    document.getElementById('questions').style.display="none";
-    document.getElementById('answers').style.display="none";
+    document.getElementById('questions').style.display = "none";
+    document.getElementById('answers').style.display = "none";
 }
 
 function renderCurrentQuestion() {
@@ -100,6 +97,6 @@ function renderCurrentQuestion() {
 
 document.getElementById('start-btn').addEventListener("click", startGame);
 let answerButtons = document.querySelectorAll('.answer-button');
-for (let i=0; i<answerButtons.length; i++) {
+for (let i = 0; i < answerButtons.length; i++) {
     answerButtons[i].addEventListener("click", answerClick);
 }
