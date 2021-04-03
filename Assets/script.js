@@ -69,13 +69,15 @@ function answerClick(event) {
     }
 
     currentQuestionIndex++;
-    if (currentQuestionIndex >= questions.length) {
-        // we are at the end of the quiz
-        renderHighScores();
-    } else {
-        // show the next question
-        renderCurrentQuestion();
-    }
+    // if (currentQuestionIndex >= questions.length) {
+    //     // we are at the end of the quiz
+    //     renderHighScores();
+    // } else {
+    //     // show the next question
+    //     renderCurrentQuestion();
+    // }
+
+    renderHighScores();
 }
 
 function renderHighScores() {
@@ -85,6 +87,40 @@ function renderHighScores() {
     }
     document.getElementById('questions').style.display = "none";
     document.getElementById('answers').style.display = "none";
+    document.getElementById('scores').textContent = "Highscore";
+
+    // var scores = [{
+    //         name: "JRC",
+    //         score: 1500
+    //     },
+    //     {
+    //         name: "dfg",
+    //         score: 1400
+    //     },
+    //     {
+    //         name: "fgh",
+    //         score: 1200
+    //     }
+    // ]
+
+    var scores = JSON.parse(localStorage.getItem("scores")) || [];
+
+    scores.push({
+        name: "JRC",
+        score: 1500
+    })
+
+    localStorage.setItem("scores", JSON.stringify(scores));
+
+    for (var i = 0; i < scores.length; i++) {
+        var score = scores[i]
+        $(".scores").append(
+            "<li><span>" +
+            score.name +
+            "</span> <span>" +
+            score.score +
+            "</span></li>")
+    }
 }
 
 function renderCurrentQuestion() {
