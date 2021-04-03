@@ -2,6 +2,7 @@
 let currentTime = 30
 let timer = null
 let currentQuestionIndex = null
+let playerScore = 0
 
 // questions
 let questions = [{
@@ -62,6 +63,7 @@ function answerClick(event) {
     console.log(answerIndex)
     let correctAnswerIndex = questions[currentQuestionIndex].correctAnswer;
     if (answerIndex === correctAnswerIndex) {
+        playerScore = playerScore + 1;
         document.getElementById('feedback').textContent = "Correct answer!";
     } else {
         document.getElementById('feedback').textContent = "Wrong answer! -5 seconds from timer";
@@ -69,34 +71,34 @@ function answerClick(event) {
     }
 
     currentQuestionIndex++;
-    // if (currentQuestionIndex >= questions.length) {
-    //     // we are at the end of the quiz
-    //     renderHighScores();
-    // } else {
-    //     // show the next question
-    //     renderCurrentQuestion();
-    // }
-    renderSubmitScore();
+    if (currentQuestionIndex >= questions.length) {
+        // we are at the end of the quiz
+        renderHighScores();
+    } else {
+        // show the next question
+        renderCurrentQuestion();
+    }
+    // submitScore();
     // renderHighScores();
 }
 
-function renderSubmitScore() {
-    submitScore;
-}
+// function renderSubmitScore() {
+//     submitScore;
+// }
 
-function submitScore() {
-    var name = document.getElementById("myText").value;
-    console.log('it worked')
-    var scores = JSON.parse(localStorage.getItem("scores")) || [];
+// function submitScore() {
+//     let name = document.getElementById("myText").value;
+//     console.log('it worked')
+//     let scores = JSON.parse(localStorage.getItem("scores")) || [];
 
-    scores.push({
-        name: name,
-        score: timer
-    })
+//     scores.push({
+//         name: name,
+//         score: timer
+//     })
 
-    localStorage.setItem("scores", JSON.stringify(scores));
-    renderHighScores;
-}
+//     localStorage.setItem("scores", JSON.stringify(scores));
+//     renderHighScores;
+// }
 
 function renderHighScores() {
 
@@ -108,18 +110,18 @@ function renderHighScores() {
     document.getElementById('myText').style.display = "block";
     document.getElementById('submitScore').style.display = "block";
     document.getElementById('scores').textContent = "Highscore";
+    let name = document.getElementById("myText").value;
+    let scores = JSON.parse(localStorage.getItem("scores")) || [];
 
-    var scores = JSON.parse(localStorage.getItem("scores")) || [];
+    scores.push({
+        name: name,
+        score: playerScore
+    })
 
-    // scores.push({
-    //     name: "JRC",
-    //     score: 1500
-    // })
+    localStorage.setItem("scores", JSON.stringify(scores));
 
-    // localStorage.setItem("scores", JSON.stringify(scores));
-
-    for (var i = 0; i < scores.length; i++) {
-        var score = scores[i]
+    for (let i = 0; i < scores.length; i++) {
+        let score = scores[i]
         $(".scores").append("<li><span>" + score.name + "</span> <span>" + score.score + "</span></li>")
     }
 }
@@ -138,4 +140,4 @@ for (let i = 0; i < answerButtons.length; i++) {
     answerButtons[i].addEventListener("click", answerClick);
 }
 
-document.getElementById('submitScore').addEventListener("click", submitScore);
+document.getElementById('submitScore').addEventListener("click", renderHighScores);
