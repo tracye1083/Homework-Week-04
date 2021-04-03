@@ -81,6 +81,14 @@ p {
     display: none;
 }
 
+#myText {
+    display: none;
+}
+
+#submitScore {
+    display: none;
+}
+
 @media (max-width: 690px) {
     .btn {
         font-size: 1rem;

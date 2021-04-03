@@ -76,50 +76,51 @@ function answerClick(event) {
     //     // show the next question
     //     renderCurrentQuestion();
     // }
+    renderSubmitScore();
+    // renderHighScores();
+}
 
-    renderHighScores();
+function renderSubmitScore() {
+    submitScore;
+}
+
+function submitScore() {
+    var name = document.getElementById("myText").value;
+    console.log('it worked')
+    var scores = JSON.parse(localStorage.getItem("scores")) || [];
+
+    scores.push({
+        name: name,
+        score: timer
+    })
+
+    localStorage.setItem("scores", JSON.stringify(scores));
+    renderHighScores;
 }
 
 function renderHighScores() {
-    console.log('high scores go here');
+
     if (timer) {
         clearInterval(timer);
     }
     document.getElementById('questions').style.display = "none";
     document.getElementById('answers').style.display = "none";
+    document.getElementById('myText').style.display = "block";
+    document.getElementById('submitScore').style.display = "block";
     document.getElementById('scores').textContent = "Highscore";
-
-    // var scores = [{
-    //         name: "JRC",
-    //         score: 1500
-    //     },
-    //     {
-    //         name: "dfg",
-    //         score: 1400
-    //     },
-    //     {
-    //         name: "fgh",
-    //         score: 1200
-    //     }
-    // ]
 
     var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
-    scores.push({
-        name: "JRC",
-        score: 1500
-    })
+    // scores.push({
+    //     name: "JRC",
+    //     score: 1500
+    // })
 
-    localStorage.setItem("scores", JSON.stringify(scores));
+    // localStorage.setItem("scores", JSON.stringify(scores));
 
     for (var i = 0; i < scores.length; i++) {
         var score = scores[i]
-        $(".scores").append(
-            "<li><span>" +
-            score.name +
-            "</span> <span>" +
-            score.score +
-            "</span></li>")
+        $(".scores").append("<li><span>" + score.name + "</span> <span>" + score.score + "</span></li>")
     }
 }
 
@@ -136,3 +137,5 @@ let answerButtons = document.querySelectorAll('.answer-button');
 for (let i = 0; i < answerButtons.length; i++) {
     answerButtons[i].addEventListener("click", answerClick);
 }
+
+document.getElementById('submitScore').addEventListener("click", submitScore);
