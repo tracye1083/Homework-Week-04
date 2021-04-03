@@ -29,6 +29,7 @@ p {
 
 .questions {
     font-size: 20px;
+    text-align: center;
 }
 
 .timer {
@@ -61,6 +62,10 @@ p {
     color: rgb(83, 11, 124);
 }
 
+.container {
+    height: 100%;
+}
+
 .sticky-footer {
     text-align: center;
     color: #595a5a;
@@ -68,6 +73,11 @@ p {
     position: fixed;
     width: 100%;
     padding-bottom: 10px;
+}
+
+#quiz,
+#start-btn {
+    text-align: center;
 }
 
 

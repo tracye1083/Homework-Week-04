@@ -8,19 +8,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;700&display=swap">
     <link rel="stylesheet" type="text/css" href="Assets/style.css" />
-    <title>Timed Quiz</title>
+    <title>Timed Coding Knowledge Quiz</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="starting-text">
-            <h1>Coding Quiz</h1>
-            <p>Try to answer as many questions as you can before the clock runs out.
-                <br>Any incorrect answers will subtract 10 seconds from the clock. <br>Submit your initials to record your score at the end of the quiz!
+        <div class="starting-text" id="starting-text">
+            <h1>Coding Knowledge Quiz</h1>
+            <p id="instructions">Try to answer as many questions as you can before the clock runs out.
+                <br>Any incorrect answers will subtract 10 seconds from the clock.
+                <br>Submit your initials to record your score at the end of the quiz!
             </p>
         </div>
 
-        <div class="quiz">
+        <div class="quiz" id="quiz">
             <div>
                 <button type="button" class="btn" id="start-btn">Start</button>
             </div>
@@ -35,31 +36,36 @@
                     </button>
                 <button type="button" class="answer-button btn" id="answer3">
                     </button>
-            </div>
-
-            <div class="timer" id="timer-display">
+                <button type="button" class="answer-button btn" id="answer4">
+                    </button>
             </div>
 
             <div class="feedback" id="feedback">
             </div>
 
-            <form class="initials" onsubmit="return false">
-                <input type="text" id="myText" value="Initials">
-                <button id="submitScore">Submit Score!</button>
+            <div class="timer" id="timer-display">
+            </div>
+
+            <form class="initials">
+                Initials: <input type="text" id="myText" placeholder="Type your Initials Here!">
+                <button class="btn" type="button" id="submitScore">Submit Score!</button>
             </form>
+            <!-- <form id="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post" required>
+                Initials: <input type="text" name="fname">
+                <input type="submit" value="Submit">
+            </form> -->
 
             <div class="scores" id="scores">
-                Highscores goes here!
 
             </div>
         </div>
+        <footer class="sticky-footer">
+            Copyright &copy; 2021 Tracy Angell
+        </footer>
     </div>
 
-    <footer class="sticky-footer">
-        Copyright &copy; 2021 Tracy Angell
-    </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
     <script type="text/javascript" src="Assets/script.js">
     </script>
 
