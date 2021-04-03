@@ -115,8 +115,7 @@ function endGame() {
     document.getElementById('answers').style.display = "none";
     document.getElementById('feedback').style.display = "none";
     // shows input to enter player initials and player scores
-    document.getElementById('myText').style.display = "block";
-    document.getElementById('submitScore').style.display = "block";
+    document.getElementById('initials').style.display = "block";
 }
 
 function submitYourScore() {
@@ -137,11 +136,21 @@ function submitYourScore() {
 function renderHighScores(scoresToRender) {
     console.log('render high scores called')
 
+    let playerDiv = document.createElement('div')
+    playerDiv.textContent = 'Player Scores'
+
+    let listWrapper = document.createElement('ol')
     for (let i = 0; i < scoresToRender.length; i++) {
         let thisScore = scoresToRender[i]
-        document.getElementById('scores').append("<li><span>" + thisScore.name + "</span> <span>" + thisScore.score + "</span></li>")
+        let listElement = document.createElement('li')
+        listElement.textContent = `${thisScore.name}: ${thisScore.score}`
+        listWrapper.appendChild(listElement)
     }
-    document.getElementById('scores').textContent = "Player Scores";
+
+    document.getElementById("scores").textContent = ""
+    document.getElementById("scores").appendChild(playerDiv)
+    document.getElementById("scores").appendChild(listWrapper);
+
 }
 
 
