@@ -1,5 +1,5 @@
 // Time set in seconds
-let currentTime = 90
+let currentTime = 60
 let timer = null
 let currentQuestionIndex = null
 let playerScore = 0
@@ -77,7 +77,7 @@ function answerClick(event) {
     let correctAnswerIndex = questions[currentQuestionIndex].correctAnswer;
     if (answerIndex === correctAnswerIndex) {
         document.getElementById('feedback').textContent = "Correct answer!";
-        playerScore = playerScore + 5;
+        playerScore = playerScore + 1;
     } else {
         document.getElementById('feedback').textContent = "Wrong answer! -5 seconds from timer";
         currentTime = currentTime - 5;
