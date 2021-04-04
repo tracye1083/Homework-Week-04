@@ -6,14 +6,14 @@ let playerScore = 0
 
 // questions
 let questions = [{
-        questionText: 'Which of these is not a way to save a variable?',
+        questionText: 'Which of these is NOT a way to save a variable?',
         answers: [
             'var', 'vet', 'let', 'const'
         ],
         correctAnswer: 1
     },
     {
-        questionText: 'Which of the following is not considered a JavaScript operator?',
+        questionText: 'Which of the following is NOT considered a JavaScript operator?',
         answers: [
             'this', 'new', 'typeof', 'delete'
         ],
@@ -59,7 +59,6 @@ let tick = function() {
 // starting game function
 
 function startGame(event) {
-    console.log('clicked Start')
     document.getElementById('start-btn').style.display = "none";
     document.getElementById('instructions').style.display = "none";
     currentQuestionIndex = 0;
@@ -73,10 +72,8 @@ function startGame(event) {
 
 function answerClick(event) {
     let answerId = event.target.id;
-    console.log('i clicked ' + answerId);
     // provide feedback on answer, increase score for correct, decrease timer for incorrect
     let answerIndex = parseInt(answerId.substring(6)) - 1;
-    console.log(answerIndex)
     let correctAnswerIndex = questions[currentQuestionIndex].correctAnswer;
     if (answerIndex === correctAnswerIndex) {
         document.getElementById('feedback').textContent = "Correct answer!";
@@ -106,7 +103,6 @@ function renderCurrentQuestion() {
 }
 
 function endGame() {
-    console.log('endGame called')
     if (timer) {
         clearInterval(timer);
     }
@@ -122,19 +118,16 @@ function submitYourScore() {
     // get user submitted initials to submit to local storage 
     let name = document.getElementById("myText").value;
     let scores = JSON.parse(localStorage.getItem("scores")) || [];
-    console.log(scores)
     scores.push({
         name: name,
         score: playerScore
     })
-    console.log(scores)
     localStorage.setItem("scores", JSON.stringify(scores));
     renderHighScores(scores);
 }
 
 // printed list of player scores
 function renderHighScores(scoresToRender) {
-    console.log('render high scores called')
 
     let playerDiv = document.createElement('div')
     playerDiv.textContent = 'Player Scores'
