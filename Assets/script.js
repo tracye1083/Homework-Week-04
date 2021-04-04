@@ -132,7 +132,7 @@ function submitYourScore() {
     renderHighScores(scores);
 }
 
-// Player enters Initials and submits score which is printed in the list of player scores
+// printed list of player scores
 function renderHighScores(scoresToRender) {
     console.log('render high scores called')
 
@@ -143,7 +143,7 @@ function renderHighScores(scoresToRender) {
     for (let i = 0; i < scoresToRender.length; i++) {
         let thisScore = scoresToRender[i]
         let listElement = document.createElement('li')
-        listElement.textContent = `${thisScore.name}: ${thisScore.score}`
+        listElement.textContent = `${thisScore.name} --- ${thisScore.score}`
         listWrapper.appendChild(listElement)
     }
 
@@ -151,6 +151,7 @@ function renderHighScores(scoresToRender) {
     document.getElementById("scores").appendChild(playerDiv)
     document.getElementById("scores").appendChild(listWrapper);
 
+    document.getElementById('timer-display').style.display = "none";
 }
 
 

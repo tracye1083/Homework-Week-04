@@ -15,7 +15,10 @@
     <div class="container">
         <div class="starting-text" id="starting-text">
             <h1>Coding Knowledge Quiz</h1>
-            <p id="instructions">Try to answer as many questions as you can before the clock runs out.
+            <div class="wrapper">
+                <div class="divider div-transparent"></div>
+            </div>
+            <p class="instructions" id="instructions">Try to answer as many questions as you can before the clock runs out.
                 <br>Any incorrect answers will subtract 10 seconds from the clock.
                 <br>Submit your initials to record your score at the end of the quiz!
             </p>
@@ -44,17 +47,13 @@
             </div>
 
             <div class="timer" id="timer-display">
+
             </div>
 
-            <form class="initials" id="initials">
+            <div class="initials" id="initials">
                 <input type="text" id="myText" placeholder="Type your Initials Here!">
                 <button class="btn" type="button" id="submitScore">Submit Score!</button>
-            </form>
-            <!-- <form id="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post" required>
-                Initials: <input type="text" name="fname">
-                <input type="submit" value="Submit">
-            </form> -->
-
+            </div>
             <div class="scores" id="scores">
 
             </div>

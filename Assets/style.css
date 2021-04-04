@@ -8,8 +8,32 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
+
+/* Style for Divider */
+
+.wrapper {
+    padding-bottom: 50px;
+}
+
+.divider {
+    position: relative;
+    margin-top: 50px;
+    height: 1px;
+}
+
+.div-transparent:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, rgb(72, 8, 175), transparent);
+}
+
 h1 {
-    font-size: 44px;
+    font-size: 2.75rem;
     color: rgb(72, 8, 175);
 }
 
@@ -19,8 +43,22 @@ h3 {
     color: rgb(83, 11, 124);
 }
 
-p {
-    font-size: 20px;
+.instructions {
+    font-size: 1.50rem;
+}
+
+input[type=text] {
+    height: 40px;
+    border: 4px solid rgb(83, 11, 124);
+    border-radius: 15px;
+}
+
+input[type=text]:focus {
+    background-color: #cca2fcdc;
+}
+
+.starting-text {
+    text-align: center;
 }
 
 .quiz {
@@ -28,17 +66,27 @@ p {
 }
 
 .questions {
-    font-size: 20px;
+    font-size: 1.375rem;
     text-align: center;
+    padding-bottom: 5px;
 }
 
 .timer {
-    font-size: 25px;
+    text-align: left;
+    font-size: 1.5625rem;
 }
 
 .feedback {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
+}
+
+.scores {
+    font-size: 1.75rem;
+    text-align: justify;
+    padding: 2px;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 .btn {
@@ -49,7 +97,7 @@ p {
     box-shadow: rgba(4, 0, 5, 0.1) 0px 1px 6px 0px rgba(4, 0, 5, 0.1) 0px 1px 1px 0px;
     color: hsl(0, 0%, 100%);
     display: inline-block;
-    font-size: 22px;
+    font-size: 1.375rem;
     line-height: 22px;
     margin: 16px 16px 16px 20px;
     padding: 14px 34px;
@@ -68,10 +116,12 @@ p {
 
 .sticky-footer {
     text-align: center;
-    color: #595a5a;
+    color: #ebecec;
+    background-color: rgba(83, 11, 124, 0.753);
     bottom: 0px;
     position: fixed;
     width: 100%;
+    padding-top: 4px;
     padding-bottom: 10px;
 }
 
