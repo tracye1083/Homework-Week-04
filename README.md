@@ -16,7 +16,7 @@ Each question has multiple choice options and the player will be provided with f
 If the player runs out of time or runs out of questions the quiz will end and they will be prompted to enter their initials and submit them to be reflected on the Player Scores list which will appear on the lower portion of the screen.
 ![Submit Score Screen](Assets/quiz3.png)
 ***
-[Coding Knowledge Quiz](https://tracye1083.github.io/Homework-Week-04/)
+[Coding Knowledge Quiz](https://tracye1083.github.io/Timed-Coding-Knowledge-Quiz/)
 ***
 **CONTACT INFORMATION**
 
